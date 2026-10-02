@@ -1,0 +1,14 @@
+{
+  "name": "gdrive-private-stream",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A tiny stateless Google Drive video launcher designed for Render's free tier.",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

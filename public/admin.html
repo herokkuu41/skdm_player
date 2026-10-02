@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Admin · Private Stream</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <main class="shell admin-shell">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">▶</span>
+        <span>Private Stream</span>
+      </a>
+      <span class="pill">ADMIN</span>
+    </header>
+
+    <section class="admin-grid">
+      <div class="card form-card">
+        <p class="eyebrow">CREATE WATCH LINK</p>
+        <h1>Add a Google Drive video</h1>
+        <p class="lead">Paste a Drive share link. The server stores nothing: it creates an encrypted, signed watch URL.</p>
+
+        <form id="createForm" autocomplete="off">
+          <label>
+            <span>Admin password</span>
+            <input id="adminPassword" name="adminPassword" type="password" required autocomplete="current-password" placeholder="Your Render ADMIN_PASSWORD">
+          </label>
+          <label>
+            <span>Video title</span>
+            <input id="title" name="title" type="text" maxlength="120" placeholder="Movie night">
+          </label>
+          <label>
+            <span>Google Drive link</span>
+            <input id="driveUrl" name="driveUrl" type="url" required inputmode="url" placeholder="https://drive.google.com/file/d/.../view">
+          </label>
+          <label>
+            <span>Watch link expiry</span>
+            <select id="expiryDays" name="expiryDays">
+              <option value="0">Never</option>
+              <option value="1">1 day</option>
+              <option value="7">7 days</option>
+              <option value="30">30 days</option>
+              <option value="90">90 days</option>
+            </select>
+          </label>
+          <button id="createButton" class="button primary" type="submit">Create private watch link</button>
+          <p id="formMessage" class="form-message" role="status"></p>
+        </form>
+      </div>
+
+      <aside class="card info-card">
+        <p class="eyebrow">HOW IT WORKS</p>
+        <h2>Zero video proxying</h2>
+        <div class="flow">
+          <div><strong>1</strong><span>Render serves this tiny page.</span></div>
+          <div><strong>2</strong><span>Your watch token is decrypted by the app.</span></div>
+          <div><strong>3</strong><span>The browser opens Google Drive directly.</span></div>
+        </div>
+        <div class="notice">
+          For personal use, you can keep the Drive file restricted to your Google account. If another viewer needs access, share the Drive file with that Google account or change Drive permissions yourself.
+        </div>
+      </aside>
+    </section>
+
+    <section class="card result-card hidden" id="resultCard">
+      <div>
+        <p class="eyebrow">READY</p>
+        <h2 id="resultTitle">Watch link</h2>
+      </div>
+      <div class="copy-row">
+        <input id="watchUrl" readonly aria-label="Generated watch URL">
+        <button id="copyButton" class="button secondary" type="button">Copy</button>
+        <a id="openButton" class="button primary" href="#" target="_blank" rel="noopener">Open</a>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THIS BROWSER</p>
+          <h2>Recent links</h2>
+        </div>
+        <button id="clearHistory" class="text-button" type="button">Clear history</button>
+      </div>
+      <div id="history" class="history-list"></div>
+      <p id="historyEmpty" class="muted">No links created in this browser yet.</p>
+    </section>
+  </main>
+  <script type="module" src="/assets/admin.js"></script>
+</body>
+</html>

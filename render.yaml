@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: gdrive-private-stream
+    runtime: node
+    plan: free
+    buildCommand: echo "No build step"
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SIGNING_SECRET
+        generateValue: true

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Private Stream</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <main class="shell watch-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Private Stream home">
+        <span class="brand-mark">▶</span>
+        <span>Private Stream</span>
+      </a>
+      <a class="quiet-link" href="/admin">Admin</a>
+    </header>
+
+    <section class="player-card" aria-live="polite">
+      <div id="emptyState" class="empty-state">
+        <div class="spinner" aria-hidden="true"></div>
+        <h1>Loading video…</h1>
+        <p>Only the page metadata comes from this server. Video playback goes directly from Google Drive to your browser.</p>
+      </div>
+
+      <div id="playerWrap" class="player-wrap hidden">
+        <div class="ratio-box">
+          <iframe
+            id="drivePlayer"
+            title="Google Drive video player"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowfullscreen
+            referrerpolicy="no-referrer"
+            loading="eager"></iframe>
+        </div>
+        <div class="player-meta">
+          <div>
+            <p class="eyebrow">NOW PLAYING</p>
+            <h1 id="videoTitle">Private video</h1>
+          </div>
+          <p class="helper">Use the <strong>⚙ settings</strong> inside the Drive player for quality, captions, and other playback options that Drive exposes.</p>
+        </div>
+      </div>
+
+      <div id="errorState" class="empty-state hidden">
+        <div class="error-icon">!</div>
+        <h1 id="errorTitle">Video unavailable</h1>
+        <p id="errorText">This watch link is invalid or expired.</p>
+        <a class="button secondary" href="/admin">Open admin</a>
+      </div>
+    </section>
+
+    <footer class="footer-note">No video bytes are proxied through Render.</footer>
+  </main>
+  <script type="module" src="/assets/watch.js"></script>
+</body>
+</html>
